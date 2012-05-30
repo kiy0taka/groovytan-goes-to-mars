@@ -45,6 +45,7 @@ start {
                 button 'Right', onAction: move.curry(1, 100, 0)
                 button 'Up', onAction: move.curry(1, 0, -100)
                 button 'Down', onAction: move.curry(1, 0, 100)
+                button 'Reset', onAction: { translateTransition(0.5.s, toX:0-img.x, toY:img.y-553, node:img).play() }
                 button 'DSL', onAction: {
                     popup.show(primaryStage)
                 }
