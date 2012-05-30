@@ -1,0 +1,27 @@
+apply plugin:'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:1.8.6'
+    compile files("${System.getenv('JAVA_HOME')}/jre/lib/jfxrt.jar")
+    compile 'org.codehaus.groovyfx:groovyfx:0.2'
+}
+
+compileGroovy {
+    groovyOptions.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
+}
+
+defaultTasks 'groovy-tan'
+
+task 'groovy-tan'(dependsOn: 'classes', type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = "org.jggug.dsl.GroovyTanView"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-rc-3'
+}
